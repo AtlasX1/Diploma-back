@@ -12,4 +12,4 @@ const schema = new Schema({
   },
 });
 
-export default model("Test", schema);
+module.exports = model("Test", schema);
