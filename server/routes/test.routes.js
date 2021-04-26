@@ -1,4 +1,4 @@
-import Test from "../models/test";
+const Test = require("../models/test");
 const router = require("express").Router();
 
 router.post("/create", async (req, res) => {
