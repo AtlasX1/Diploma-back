@@ -11,7 +11,7 @@ router.post("/create", async (req, res) => {
     await test.save();
     return res
       .status(200)
-      .json({ message: "Test created successfully!", task });
+      .json({ message: "Test created successfully!", test });
   } catch (e) {
     console.log(e);
     return res.status(500).json({ message: "Something went wrong, try again" });
