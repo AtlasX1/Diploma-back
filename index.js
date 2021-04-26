@@ -1,9 +1,10 @@
-const express = require("express");
-const mongoose = require("mongoose");
+import express from "express";
+import { connect } from "mongoose";
 
-const cors = require("cors");
+import cors from "cors";
 
 require("dotenv").config();
+
 const initServer = () => {
   const app = express();
   app.use(cors());
@@ -11,14 +12,12 @@ const initServer = () => {
     res.end("Server is running!");
   });
 
-  //   app.use("/api/auth", require("./server/routes/auth.routes"));
-  //   app.use("/api/tasks", require("./server/routes/tasks.routes"));
-  //   app.use("/api/userTries", require("./server/routes/userTries.routes"));
+  app.use("/api/test", require("./server/routes/test.routes"));
   app.listen(process.env.PORT || 5000, () => {
     console.log("Server running");
   });
 };
-mongoose.connect(
+connect(
   process.env.MONGO_DB,
   {
     useUnifiedTopology: true,
