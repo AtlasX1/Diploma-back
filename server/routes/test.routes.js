@@ -30,3 +30,4 @@ router.get("/", async (req, res) => {
     return res.status(500).json({ message: "Something went wrong, try again" });
   }
 });
+module.exports = router;
