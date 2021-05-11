@@ -6,16 +6,14 @@ const cors = require("cors");
 require("dotenv").config();
 const initServer = () => {
   const app = express();
-  app.use(cors());
+  app.use(cors({ origin: "*" }));
   const bodyParser = require("body-parser");
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use(express.json());
-  app.get("/", (req, res) => {
-    res.end("Server is running!");
-  });
+
   app.use(function (req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "https://atlasx1.github.io");
+    res.setHeader("Access-Control-Allow-Origin", "*");
 
     res.setHeader(
       "Access-Control-Allow-Methods",
@@ -30,6 +28,9 @@ const initServer = () => {
     res.setHeader("Access-Control-Allow-Credentials", true);
 
     next();
+  });
+  app.get("/", (req, res) => {
+    res.end("Server is running!");
   });
   // app.use("/api/test", require("./server/routes/test"));
   app.use("/api/substance", require("./server/routes/substance"));
