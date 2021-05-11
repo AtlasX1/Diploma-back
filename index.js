@@ -20,10 +20,7 @@ var allowCrossDomain = function (req, res, next) {
 require("dotenv").config();
 const initServer = () => {
   const app = express();
-  app.configure(function () {
-    app.use(allowCrossDomain);
-    // app.use(express.bodyParser());
-  });
+  app.use(cors({ origin: "*" }));
   const bodyParser = require("body-parser");
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
