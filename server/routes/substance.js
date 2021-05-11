@@ -20,9 +20,9 @@ router.post("/create", async (req, res) => {
 
       const newSubstance = {
         name: activeSubstance,
-        description: description ?? "",
+        description: description,
         disease: [],
-        contraindicationDrug: contraindicationDrug ?? [],
+        contraindicationDrug: contraindicationDrug,
         contraindicationHuman: [],
         specificsOfPatients: [],
       };

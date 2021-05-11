@@ -29,7 +29,6 @@ const initServer = () => {
     res.end("Server is running!");
   });
 
-  // app.use("/api/test", require("./server/routes/test"));
   app.use("/api/substance", require("./server/routes/substance"));
   app.use("/api/substance", require("./server/routes/getInfo"));
 
