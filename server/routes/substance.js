@@ -10,7 +10,7 @@ router.post("/create", async (req, res) => {
     const reqData = req.body;
     if (reqData) {
       const {
-        activeSubstance,
+        name,
         description,
         disease,
         contraindicationDrug,
@@ -19,7 +19,7 @@ router.post("/create", async (req, res) => {
       } = reqData;
 
       const newSubstance = {
-        name: activeSubstance,
+        name: name,
         description: description,
         disease: [],
         contraindicationDrug: contraindicationDrug,
