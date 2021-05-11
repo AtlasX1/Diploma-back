@@ -21,7 +21,7 @@ router.get("/getInfo", async (req, res) => {
           select: "name -_id",
         })
         .populate({
-          path: "featureUse",
+          path: "specificsOfPatients",
           select: "description -_id",
           populate: { path: "feature", select: "name -_id" },
         })
@@ -36,31 +36,30 @@ router.get("/getInfo", async (req, res) => {
         result = allSubstance.filter((substance) =>
           substance.disease.some((dis) => dis.name === disease)
         );
+        return res.status(200).json({ ...result, message: "success" });
       }
       if ((!result || result.length === 0) && symptoms?.length > 0) {
         let tmpResult = {};
         for (const symptomName of symptoms) {
-          resultSymptom[symptomName] = allSubstance
-            .filter((substance) =>
-              substance.disease.some((dis) =>
-                dis.symptoms.some((sym) => sym.name === symptomName)
-              )
+          resultSymptom[symptomName] = allSubstance.filter((substance) =>
+            substance.disease.some((dis) =>
+              dis.symptoms.some((sym) => sym.name === symptomName)
             )
-            .map((el) => el.name);
+          );
+          // .map((el) => el.name);
         }
 
-        for (const symptomName of Object.keys(resultSymptom)) {
-          for (const diseaseName of resultSymptom[symptomName]) {
-            if (!tmpResult[diseaseName]) {
-              tmpResult[diseaseName] = [symptomName];
-            } else {
-              tmpResult[diseaseName].push(symptomName);
-            }
-          }
-        }
-        console.log(tmpResult);
+        // for (const symptomName of Object.keys(resultSymptom)) {
+        //   for (const diseaseName of resultSymptom[symptomName]) {
+        //     if (!tmpResult[diseaseName]) {
+        //       tmpResult[diseaseName] = [symptomName];
+        //     } else {
+        //       tmpResult[diseaseName].push(symptomName);
+        //     }
+        //   }
+        // }
+        return res.status(200).json({ ...resultSymptom, message: "success" });
       }
-      return res.status(200).json({ ...allSubstance });
     }
 
     return res.status(200).json({ message: "Ok!" });

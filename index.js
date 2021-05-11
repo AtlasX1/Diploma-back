@@ -10,7 +10,7 @@ const initServer = () => {
   const bodyParser = require("body-parser");
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
-
+  app.use(express.json());
   app.get("/", (req, res) => {
     res.end("Server is running!");
   });

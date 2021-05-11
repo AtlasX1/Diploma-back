@@ -13,7 +13,7 @@ const schema = new Schema({
   disease: [{ type: Types.ObjectId, ref: "Disease" }],
   contraindicationDrug: [String],
   contraindicationHuman: [{ type: Types.ObjectId, ref: "Feature" }],
-  featureUse: [{ type: Types.ObjectId, ref: "FeatureUse" }],
+  specificsOfPatients: [{ type: Types.ObjectId, ref: "FeatureUse" }],
 });
 
 module.exports = model("Substance", schema);
