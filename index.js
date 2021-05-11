@@ -14,7 +14,23 @@ const initServer = () => {
   app.get("/", (req, res) => {
     res.end("Server is running!");
   });
+  app.use(function (req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "https://atlasx1.github.io");
 
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+    );
+
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "X-Requested-With,content-type"
+    );
+
+    res.setHeader("Access-Control-Allow-Credentials", true);
+
+    next();
+  });
   // app.use("/api/test", require("./server/routes/test"));
   app.use("/api/substance", require("./server/routes/substance"));
   app.use("/api/substance", require("./server/routes/getInfo"));
