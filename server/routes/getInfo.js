@@ -38,7 +38,7 @@ router.get("/getInfo", async (req, res) => {
         );
         return res.status(200).json({ ...result, message: "success" });
       }
-      if ((!result || result.length === 0) && symptoms?.length > 0) {
+      if ((!result || result.length === 0) && symptoms.length > 0) {
         let tmpResult = {};
         for (const symptomName of symptoms) {
           resultSymptom[symptomName] = allSubstance.filter((substance) =>
