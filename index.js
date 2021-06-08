@@ -37,8 +37,8 @@ const initServer = () => {
   });
 };
 mongoose.connect(
-  process.env.MONGO_DB,
-  // "mongodb+srv://serhii:qwaszx@cluster0.jdigr.gcp.mongodb.net/HealInfo?retryWrites=true&w=majority",
+  // process.env.MONGO_DB,
+  "mongodb+srv://serhii:qwaszx@cluster0.jdigr.gcp.mongodb.net/HealInfo?retryWrites=true&w=majority",
   {
     useUnifiedTopology: true,
     useNewUrlParser: true,

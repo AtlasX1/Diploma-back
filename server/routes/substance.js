@@ -101,4 +101,14 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.delete("/remove", async (req, res) => {
+  try {
+    console.log(req.body);
+
+    return res.status(200);
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json({ message: "Something went wrong, try again" });
+  }
+});
 module.exports = router;
